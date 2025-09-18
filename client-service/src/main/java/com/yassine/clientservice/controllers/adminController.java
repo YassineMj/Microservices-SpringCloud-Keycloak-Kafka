@@ -1,6 +1,6 @@
 package com.yassine.clientservice.controllers;
 
-import com.yassine.clientservice.model.Client;
+import com.yassine.clientservice.entity.Client;
 import com.yassine.clientservice.services.ClientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,9 +25,17 @@ public class adminController {
     }
 
     @GetMapping("clients/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<Client> getById(@PathVariable String id) {
         return service.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/get-client-username/{username}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+    public ResponseEntity<Client> getByUsername(@PathVariable String username) {
+        return service.findByUsername(username)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

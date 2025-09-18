@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/authentification/**").permitAll()
-
+                        .requestMatchers("/authentification/mySession").authenticated()
                         .anyRequest().authenticated()
                 )
                 // Désactivation CSRF pour les API REST

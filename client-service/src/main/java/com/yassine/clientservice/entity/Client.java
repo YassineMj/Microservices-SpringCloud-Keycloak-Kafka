@@ -1,4 +1,4 @@
-package com.yassine.clientservice.model;
+package com.yassine.clientservice.entity;
 
 
 import org.springframework.data.annotation.Id;
@@ -6,8 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
-import java.util.UUID;
 
 @Document(collection = "clients")
 public class Client {
@@ -46,6 +44,6 @@ public class Client {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    public String getAdrs() { return adresse; }
-    public void setAdrs(String adrs) { this.adresse = adrs; }
+    public String getadresse() { return adresse; }
+    public void setadresse(String adrs) { this.adresse = adrs; }
 }

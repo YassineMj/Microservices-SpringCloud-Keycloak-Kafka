@@ -1,7 +1,7 @@
 package com.yassine.clientservice.services;
 
 
-import com.yassine.clientservice.model.Client;
+import com.yassine.clientservice.entity.Client;
 import com.yassine.clientservice.repository.ClientRepository;
 import com.yassine.clientservice.requests.AuthRequest;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class ClientService {
         clientEntity.setId(userId);
         clientEntity.setUsername(client.getUsername());
         clientEntity.setEmail(client.getEmail());
-        clientEntity.setAdrs(client.getAdresse());
+        clientEntity.setadresse(client.getAdresse());
         repo.save(clientEntity);
 
         return clientEntity.getId();
@@ -39,6 +39,10 @@ public class ClientService {
 
     public Optional<Client> findById(String id) {
         return repo.findById(id);
+    }
+
+    public Optional<Client> findByUsername(String username) {
+        return repo.findByUsername(username);
     }
 
     public List<Client> findAll() {
