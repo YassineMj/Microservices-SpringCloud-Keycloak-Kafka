@@ -20,7 +20,7 @@ public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, DtoOrder> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "spring-cloud-kafka:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "payment-service-group");
         props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         return new DefaultKafkaConsumerFactory<>(
