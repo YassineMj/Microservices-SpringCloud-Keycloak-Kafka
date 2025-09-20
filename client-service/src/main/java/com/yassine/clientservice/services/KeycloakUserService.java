@@ -18,9 +18,9 @@ public class KeycloakUserService {
     private final String realm = "myrealm"; // Nom de realm
 
 
-    public KeycloakUserService() {
+    public KeycloakUserService(@Value("${auth-server-url}") String serverUrl) {
         this.keycloak = KeycloakBuilder.builder()
-                .serverUrl("http://localhost:8080")
+                .serverUrl(serverUrl)
                 .realm("master") // realm admin
                 .clientId("admin-cli")
                 .username("yassine")   // admin keycloak

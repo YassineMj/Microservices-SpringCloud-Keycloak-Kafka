@@ -8,6 +8,13 @@ public class Client {
 
     public Client(){}
 
+    public Client(String id, String username, String email, String adresse) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.adresse = adresse;
+    }
+
     public String getId() {
         return id;
     }

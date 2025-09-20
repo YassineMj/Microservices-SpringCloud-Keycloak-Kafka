@@ -6,17 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="order-service" />
         <module name="payment-service" />
+        <module name="config-service" />
+        <module name="produit-service" />
+        <module name="order-service" />
         <module name="gateway" />
         <module name="discovery-service" />
         <module name="client-service" />
-        <module name="produit-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="authentification" target="19" />
       <module name="client-service" target="19" />
+      <module name="config-service" target="19" />
       <module name="discovery-service" target="19" />
       <module name="gateway" target="19" />
       <module name="order-service" target="19" />
@@ -28,6 +30,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="authentification" options="-parameters" />
       <module name="client-service" options="-parameters" />
+      <module name="config-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="order-service" options="-parameters" />

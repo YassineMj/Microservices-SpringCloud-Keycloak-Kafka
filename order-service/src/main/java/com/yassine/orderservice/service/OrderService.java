@@ -40,6 +40,10 @@ public class OrderService {
             throw new RuntimeException("Produit ou Client introuvable !");
         }
 
+        if (produit.getLibelle().equals("defaultProduit") || client.getId().equals("defaultId")) {
+            throw new RuntimeException("service tombé, essaye plus tard");
+        }
+
         if (produit.getQuantity() < quantityAchat) {
             throw new RuntimeException("Stock insuffisant !");
         }

@@ -14,6 +14,6 @@ public class Producer {
 
     public void send(DtoOrder order){
         template.send("Topic-Orders",order.getId(),order);
-        System.out.println("OrderService - envoyé order: "+order);
+        System.out.println("📩 OrderService - envoyé order: "+order);
     }
 }

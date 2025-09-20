@@ -1,0 +1,34 @@
+- docker-compose.yml
+
+
+- client service (8082) : 
+dépendances : 
+sécurity : 
+properties, sécurity, entity, repo, service, controller
+
+
+- produit service (8083) : 
+dépendances : 
+sécurity : 
+properties, sécurity, entity, repo, service, controller
+
+- discovery service (8761) : 
+dépendances : 
+properties
+
+- gateway (8888) : 
+dépendances : 
+properties, main
+
+- order service (8084)
+dépendances :
+properties, sécurity, entity, service, FeignREST, FeignClientInterceptor, controller, producerDTO, Producer
+
+- payment service (8085)
+dépendances :
+properties, consumerDTO, configConsumer, consumer
+
+- CONFIG-REPO
+
+- config service
+properties, main

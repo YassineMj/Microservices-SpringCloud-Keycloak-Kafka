@@ -26,9 +26,29 @@ public class OrderController {
             @RequestParam int quantity,
             Authentication authentication) {
 
-        Order order = orderService.createOrder(idProduit, quantity, authentication);
+        try {
+            Order order = orderService.createOrder(idProduit, quantity, authentication);
+            return ResponseEntity.ok("Order affecté - Order ID: " + order.getId());
 
-        return ResponseEntity.ok("Payment affecté ✅ - Order ID: " + order.getId());
+        } catch (RuntimeException ex) {
+            String message;
+
+            switch (ex.getMessage()) {
+                case "Produit ou Client introuvable !":
+                    message = "Erreur : Produit ou Client introuvable !";
+                    break;
+                case "service tombé, essaye plus tard":
+                    message = "Service indisponible, réessayez plus tard.";
+                    break;
+                case "Stock insuffisant !":
+                    message = "Stock insuffisant pour cette commande.";
+                    break;
+                default:
+                    message = "Erreur inattendue : " + ex.getMessage();
+            }
+
+            return ResponseEntity.badRequest().body(message);
+        }
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
